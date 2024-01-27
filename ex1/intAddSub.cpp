@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+extern "C" int intAddSub(int a, int b, int c, int d);
+
+void PrintResult(const char* msg, int a, int b, int c, int d, int result)
+{
+    const char nl = '\n';
+    cout << msg << nl;
+    cout << "a = " << a << nl;
+    cout << "b = " << b << nl;
+    cout << "c = " << c << nl;
+    cout << "d = " << d << nl;
+    cout << "result = " << result << nl;
+    cout << nl;
+}
+
+int main(int argc, char** argv)
+{
+    int a, b, c, d, result;
+
+    // Test 1
+    a = 10; b = 20; c = 30; d = 18;
+    result = intAddSub(a, b, c, d);
+    PrintResult("Test 1", a, b, c, d, result);
+
+    // Test 2
+    a = 101; b = 34; c = -190; d = 25;
+    result = intAddSub(a, b, c, d);
+    PrintResult("Test 2", a, b, c, d, result);
+}

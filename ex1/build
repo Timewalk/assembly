@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Generate the object file from the C++ source file
+clang++ -c -o bin/intAddSub_cpp.o intAddSub.cpp
+
+# Generate the assembly file from the C++ source file
+clang++ -S -o bin/intAddSub_cpp.s intAddSub.cpp
+
+# Compile the assembly file to an object file
+clang++ -c -o bin/intAddSub_asm.o intAddSub.s
+
+# Link the object files to create the final binary
+clang++ -o bin/intAddSub bin/intAddSub_cpp.o bin/intAddSub_asm.o
+
+
+# Create dumps of the the *.o files for reading
+objdump -d bin/intAddSub_cpp.o > bin/intAddSub_cpp_dump.s
+objdump -d bin/intAddSub_asm.o > bin/intAddSub_asm_dump.s
+
