@@ -1,0 +1,20 @@
+#!/bin/bash
+mkdir -p bin
+
+# Generate the object file from the C++ source file
+clang++ -c -o bin/division_cpp.o division.cpp
+
+# Generate the assembly file from the C++ source file
+clang++ -S -o bin/division_cpp.s division.cpp
+
+# Compile the assembly file to an object file
+clang++ -c -o bin/division_asm.o division.s
+
+# Link the object files to create the final binary
+clang++ -o bin/division bin/division_cpp.o bin/division_asm.o
+
+
+# Create dumps of the the *.o files for reading
+objdump -d bin/division_cpp.o > bin/division_cpp_dump.s
+objdump -d bin/division_asm.o > bin/division_asm_dump.s
+
